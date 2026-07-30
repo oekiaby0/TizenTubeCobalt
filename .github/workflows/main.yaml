@@ -326,7 +326,7 @@ jobs:
   # Builds, tags, and pushes Cobalt docker build images to ghr.
   docker-build-image:
     needs: [initialize]
-    runs-on: [self-hosted, chrobalt-linux-runner]
+    runs-on: ubuntu-latest
     steps:
       - name: Restore CI Essentials
         uses: actions/checkout@v4

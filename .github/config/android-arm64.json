@@ -1,7 +1,13 @@
 {
   "docker_service": "linux",
+  "build_runners": [
+    "ubuntu-latest"
+  ],
   "platforms": [
     "android-arm64"
+  ],
+  "build_configs": [
+    "gold"
   ],
   "test_package": true,
   "test_on_device": true,
