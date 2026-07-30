@@ -42,6 +42,7 @@ runs:
       shell: bash
 
     - name: Login to GAR
+      if: ${{ runner.environment == 'self-hosted' }}
       run: |
         # Login to GAR
         TOKEN_ENDPOINT="http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token"
