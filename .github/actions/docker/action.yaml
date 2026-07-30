@@ -75,7 +75,8 @@ runs:
       run: |
         # Pull Existing Docker Image
         set -x
-        DOCKER_COMPOSE_IMAGE="${GITHUB_DOCKER_REGISTRY_URL}/${{ github.repository }}/${DOCKER_SERVICE}"
+        REPOSITORY="${GITHUB_REPOSITORY,,}"
+        DOCKER_COMPOSE_IMAGE="${GITHUB_DOCKER_REGISTRY_URL}/${REPOSITORY}/${DOCKER_SERVICE}"
 
         if [[ "$IS_PR" == "true" ]]; then
           if docker manifest inspect "${DOCKER_COMPOSE_IMAGE}:${DOCKER_CONTENT_SHA}"; then
