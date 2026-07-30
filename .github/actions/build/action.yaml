@@ -33,8 +33,8 @@ runs:
         run: |
           cd cobalt/src
           gn_flags=()
-          if [[ "${{ matrix.platform }}" == *"tvos"* ]]; then
-            # TvOS does not use RBE unless it's sccache
+          if [[ "${{ matrix.platform }}" == *"tvos"* || "${{ runner.environment }}" == "github-hosted" ]]; then
+            # GitHub-hosted runners cannot access Google's private RBE service.
             gn_flags+=(--no-rbe)
           fi
           if [[ $ENABLE_SCCACHE == "true" ]]; then
@@ -144,11 +144,11 @@ runs:
           fi
         shell: bash
       - name: Archive Android APKs
-        if: startsWith(matrix.platform, 'android') && matrix.config == 'qa'
+        if: startsWith(matrix.platform, 'android') && (matrix.config == 'qa' || matrix.config == 'gold')
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.platform }} APKs
           path: |
-            cobalt/src/out/${{ matrix.platform }}_qa/apks/*.apk
-            cobalt/src/out/${{ matrix.platform }}_qa/*_apk/*.apk
-            cobalt/src/out/${{ matrix.platform }}_qa/gen/build_info.json
+            cobalt/src/out/${{ matrix.platform }}_${{ matrix.config }}/apks/*.apk
+            cobalt/src/out/${{ matrix.platform }}_${{ matrix.config }}/*_apk/*.apk
+            cobalt/src/out/${{ matrix.platform }}_${{ matrix.config }}/gen/build_info.json

@@ -20,7 +20,7 @@
     "device_pool": "maneki"
   },
   "targets": [
-    "cobalt:gn_all"
+    "cobalt/android:cobalt_apk"
   ],
   "e2e_test_targets": [
     {
