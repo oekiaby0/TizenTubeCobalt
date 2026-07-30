@@ -97,6 +97,16 @@
               <data android:host="m.youtube.com"/>
               <data android:host="youtu.be"/>
               <data android:pathPattern=".*"/>
+              <data android:scheme="youtube" android:host="search"/>
+              <data android:scheme="youtube" android:host="play"/>
+            </intent-filter>
+            <intent-filter>
+              <action android:name="android.intent.action.VIEW"/>
+              <action android:name="android.media.action.MEDIA_PLAY_FROM_SEARCH"/>
+              <category android:name="android.intent.category.DEFAULT"/>
+              <category android:name="android.intent.category.BROWSABLE"/>
+              <data android:scheme="vnd.youtube"/>
+              <data android:scheme="vnd.youtube.launch"/>
             </intent-filter>
         </activity>
         {% endblock %}
