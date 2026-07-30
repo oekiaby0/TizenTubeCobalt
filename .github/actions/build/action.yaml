@@ -27,7 +27,7 @@ runs:
         run: |
           mkdir -p "$GITHUB_WORKSPACE/.android"
           if [[ ! -f "$GITHUB_WORKSPACE/.android/debug.keystore" ]]; then
-            keytool -genkeypair \
+            cobalt/src/third_party/jdk/current/bin/keytool -genkeypair \
               -keystore "$GITHUB_WORKSPACE/.android/debug.keystore" \
               -storepass android \
               -alias androiddebugkey \

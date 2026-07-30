@@ -469,6 +469,7 @@ jobs:
         uses: ./.github/actions/depot_tools
         with:
           use_gcloud: true
+          run_sync: 'false'
 
       - name: Build Cobalt
         id: build
